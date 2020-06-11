@@ -11,7 +11,7 @@ void setup() {
   
   // Example FOR loop
   
-  for (int k = 0; k < 5; k++) {
+  for (int k = 0; k < 8; k++) {
     Serial.println(k);
     delay(500);
   }
