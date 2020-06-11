@@ -2,5 +2,5 @@
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
     "port": "/dev/tty.usbmodem1411201",
-    "sketch": "FollowAlongs/LearningC/RGBJoystick/RGBJoystick.ino"
+    "sketch": "Labs/TransistorsHbridgeMotors/StepperLibrary/StepperLibrary.ino"
 }
