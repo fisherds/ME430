@@ -3,28 +3,26 @@ const int sequencesPerRevolution = waveStepsPerRevolution / 4;
 #define DELAY_MS 2
 
 void setup() {
-pinMode(8, OUTPUT);
-pinMode(9, OUTPUT);
-pinMode(10, OUTPUT);
-pinMode(11, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
 }
 
 void loop() {
-
   for (int k = 0; k < sequencesPerRevolution; k++) {
     //forwardWave();
     //forwardFull();
     forwardHalf();
   }
   delay(2000);
-  
+
   for (int k = 0; k < sequencesPerRevolution; k++) {
-//    reverseWave();
-//    reverseFull();
+    //reverseWave();
+    //reverseFull();
     reverseHalf();
   }
   delay(2000);
-
 }
 
 void forwardHalf() {
