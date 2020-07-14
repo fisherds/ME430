@@ -2,5 +2,5 @@
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
     "port": "/dev/tty.usbmodem141401",
-    "sketch": "FollowAlongs/MATLAB App Designer/Arduino/CommunicationMATLAB/CommunicationMATLAB.ino"
+    "sketch": "FollowAlongs/Digital IO with SFRs/Blink_SFRs/Blink_SFRs.ino"
 }

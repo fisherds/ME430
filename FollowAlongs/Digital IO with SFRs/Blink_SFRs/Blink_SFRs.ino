@@ -1,6 +1,13 @@
-#define REG_DDR_LED DDRB
-#define REG_PORT_LED PORTB
-#define BIT_LED 5
+// Note: Pin 6 on Arduino = ATmega2560 PH3
+
+// LED_BUILTIN is PB7
+// #define REG_DDR_LED DDRB
+// #define REG_PORT_LED PORTB
+// #define BIT_LED 7
+
+#define REG_DDR_LED DDRH
+#define REG_PORT_LED PORTH
+#define BIT_LED 3
 
 void setup() {
   // pinMode(LED_BUILTIN, OUTPUT);
