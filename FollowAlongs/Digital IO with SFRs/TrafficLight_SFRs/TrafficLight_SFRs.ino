@@ -1,0 +1,68 @@
+//#define PIN_LED_RED 6
+//#define PIN_LED_YELLOW 5
+//#define PIN_LED_GREEN 4
+//#define PIN_PUSHBUTTON 2
+
+#define REG_DDR_LED_RED DDRD
+#define REG_PORT_LED_RED PORTD
+#define REG_PIN_LED_RED PIND
+#define BIT_LED_RED 6
+
+#define REG_DDR_LED_YELLOW DDRD
+#define REG_PORT_LED_YELLOW PORTD
+#define REG_PIN_LED_YELLOW PIND
+#define BIT_LED_YELLOW 5
+
+#define REG_DDR_LED_GREEN DDRD
+#define REG_PORT_LED_GREEN PORTD
+#define REG_PIN_LED_GREEN PIND
+#define BIT_LED_GREEN 4
+
+#define REG_DDR_PUSHBUTTON DDRD
+#define REG_PORT_PUSHBUTTON PORTD
+#define REG_PIN_PUSHBUTTON PIND
+#define BIT_PUSHBUTTON 2
+
+
+
+void setup() {
+//  pinMode(PIN_LED_RED, OUTPUT);
+//  pinMode(PIN_LED_YELLOW, OUTPUT);
+//  pinMode(PIN_LED_GREEN, OUTPUT);
+//  pinMode(PIN_PUSHBUTTON, INPUT_PULLUP);
+  
+  REG_DDR_LED_RED |= _BV(BIT_LED_RED);
+  REG_DDR_LED_YELLOW |= _BV(BIT_LED_YELLOW);
+  REG_DDR_LED_GREEN |= _BV(BIT_LED_GREEN);
+
+  REG_DDR_PUSHBUTTON &= ~_BV(BIT_PUSHBUTTON); // Optional! the default
+  REG_PORT_PUSHBUTTON |= _BV(BIT_PUSHBUTTON); // Turn on the internal pull up resistor
+}
+
+void loop() {
+  
+  //if (!((REG_PIN_PUSHBUTTON >> BIT_PUSHBUTTON) & 0x01)) {
+  if (bit_is_clear(REG_PIN_PUSHBUTTON, BIT_PUSHBUTTON)) {
+    
+    //digitalWrite(PIN_LED_RED, LOW);
+    //digitalWrite(PIN_LED_YELLOW, LOW);
+    //digitalWrite(PIN_LED_GREEN, HIGH);
+    REG_PORT_LED_RED &= ~_BV(BIT_LED_RED);
+    REG_PORT_LED_YELLOW &= ~_BV(BIT_LED_YELLOW);
+    REG_PORT_LED_GREEN |= _BV(BIT_LED_GREEN);
+    delay(1000);
+//    digitalWrite(PIN_LED_RED, LOW);
+//    digitalWrite(PIN_LED_YELLOW, HIGH);
+//    digitalWrite(PIN_LED_GREEN, LOW);
+    REG_PORT_LED_RED &= ~_BV(BIT_LED_RED);
+    REG_PORT_LED_YELLOW |= _BV(BIT_LED_YELLOW);
+    REG_PORT_LED_GREEN &= ~_BV(BIT_LED_GREEN);
+    delay(500);
+  }
+  //digitalWrite(PIN_LED_RED, HIGH);
+  //digitalWrite(PIN_LED_YELLOW, LOW);
+  //digitalWrite(PIN_LED_GREEN, LOW);
+  REG_PORT_LED_RED |= _BV(BIT_LED_RED);
+  REG_PORT_LED_YELLOW &= ~_BV(BIT_LED_YELLOW);
+  REG_PORT_LED_GREEN &= ~_BV(BIT_LED_GREEN);
+}
