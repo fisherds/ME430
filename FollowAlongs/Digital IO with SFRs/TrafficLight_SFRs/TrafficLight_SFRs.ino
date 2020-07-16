@@ -1,8 +1,3 @@
-//#define PIN_LED_RED 6
-//#define PIN_LED_YELLOW 5
-//#define PIN_LED_GREEN 4
-//#define PIN_PUSHBUTTON 2
-
 #define REG_DDR_LED_RED DDRD
 #define REG_PORT_LED_RED PORTD
 #define REG_PIN_LED_RED PIND
@@ -23,14 +18,7 @@
 #define REG_PIN_PUSHBUTTON PIND
 #define BIT_PUSHBUTTON 2
 
-
-
-void setup() {
-//  pinMode(PIN_LED_RED, OUTPUT);
-//  pinMode(PIN_LED_YELLOW, OUTPUT);
-//  pinMode(PIN_LED_GREEN, OUTPUT);
-//  pinMode(PIN_PUSHBUTTON, INPUT_PULLUP);
-  
+void setup() {  
   REG_DDR_LED_RED |= _BV(BIT_LED_RED);
   REG_DDR_LED_YELLOW |= _BV(BIT_LED_YELLOW);
   REG_DDR_LED_GREEN |= _BV(BIT_LED_GREEN);
@@ -40,28 +28,16 @@ void setup() {
 }
 
 void loop() {
-  
-  //if (!((REG_PIN_PUSHBUTTON >> BIT_PUSHBUTTON) & 0x01)) {
-  if (bit_is_clear(REG_PIN_PUSHBUTTON, BIT_PUSHBUTTON)) {
-    
-    //digitalWrite(PIN_LED_RED, LOW);
-    //digitalWrite(PIN_LED_YELLOW, LOW);
-    //digitalWrite(PIN_LED_GREEN, HIGH);
+  if (bit_is_clear(REG_PIN_PUSHBUTTON, BIT_PUSHBUTTON)) {    
     REG_PORT_LED_RED &= ~_BV(BIT_LED_RED);
     REG_PORT_LED_YELLOW &= ~_BV(BIT_LED_YELLOW);
     REG_PORT_LED_GREEN |= _BV(BIT_LED_GREEN);
     delay(1000);
-//    digitalWrite(PIN_LED_RED, LOW);
-//    digitalWrite(PIN_LED_YELLOW, HIGH);
-//    digitalWrite(PIN_LED_GREEN, LOW);
     REG_PORT_LED_RED &= ~_BV(BIT_LED_RED);
     REG_PORT_LED_YELLOW |= _BV(BIT_LED_YELLOW);
     REG_PORT_LED_GREEN &= ~_BV(BIT_LED_GREEN);
     delay(500);
   }
-  //digitalWrite(PIN_LED_RED, HIGH);
-  //digitalWrite(PIN_LED_YELLOW, LOW);
-  //digitalWrite(PIN_LED_GREEN, LOW);
   REG_PORT_LED_RED |= _BV(BIT_LED_RED);
   REG_PORT_LED_YELLOW &= ~_BV(BIT_LED_YELLOW);
   REG_PORT_LED_GREEN &= ~_BV(BIT_LED_GREEN);
